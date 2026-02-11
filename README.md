@@ -137,6 +137,26 @@ python seo_bot.py --init
 
 First run downloads the BGE-large embedding model (~1.3GB). All processing is local and offline.
 
+## GitHub Pages Deployment
+
+This repository includes a GitHub Actions workflow that automatically deploys a landing page to GitHub Pages when you push to the `main` branch.
+
+### Setup Instructions
+
+1. Go to your repository **Settings** → **Pages**
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**
+3. Push to the `main` branch or manually trigger the workflow
+4. Your site will be available at `https://<username>.github.io/<repository>/`
+
+The landing page showcases SEOBOT features and provides quick links to the GitHub repository and documentation.
+
+### Manual Deployment
+
+You can also manually trigger the deployment:
+- Go to **Actions** tab in your repository
+- Select **Deploy to GitHub Pages** workflow
+- Click **Run workflow**
+
 ## License
 
 MIT
