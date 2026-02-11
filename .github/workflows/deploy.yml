@@ -29,7 +29,12 @@ jobs:
       - name: Create landing page
         run: |
           mkdir -p _site
-          cp herologo.png _site/herologo.png || true
+          if [ -f herologo.png ]; then
+            cp herologo.png _site/herologo.png
+            echo "Logo copied successfully"
+          else
+            echo "Logo file not found, page will render without logo"
+          fi
           cat > _site/index.html << 'EOF'
           <!DOCTYPE html>
           <html lang="en">
@@ -257,7 +262,7 @@ jobs:
           </head>
           <body>
               <div class="container">
-                  <img src="herologo.png" alt="SEOBOT Logo" class="logo" onerror="this.style.display='none'">
+                  <img src="herologo.png" alt="" role="presentation" class="logo" onerror="this.remove()">
                   
                   <h1>🤖 SEOBOT</h1>
                   <p class="subtitle">AI-Powered SEO Knowledge Assistant with RAG Engine</p>
