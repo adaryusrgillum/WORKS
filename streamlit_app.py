@@ -420,11 +420,48 @@ st.markdown("""
 if VIDEO_B64:
     st.markdown(f"""
     <div class="video-bg-container">
-        <video autoplay muted loop playsinline>
+        <video id="bg-video" autoplay loop playsinline>
             <source src="data:video/mp4;base64,{VIDEO_B64}" type="video/mp4">
         </video>
     </div>
     <div class="video-overlay"></div>
+    <button id="sound-toggle" onclick="toggleSound()" style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        background: rgba(212, 160, 23, 0.9);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        transition: transform 0.2s;
+    ">🔇</button>
+    <script>
+        const video = document.getElementById('bg-video');
+        const btn = document.getElementById('sound-toggle');
+
+        // Try to play with audio
+        video.muted = false;
+        video.play().catch(() => {{
+            // Browser blocked autoplay with sound, start muted
+            video.muted = true;
+            video.play();
+        }});
+
+        function toggleSound() {{
+            video.muted = !video.muted;
+            btn.textContent = video.muted ? '🔇' : '🔊';
+        }}
+
+        // Update button on page load
+        setTimeout(() => {{
+            btn.textContent = video.muted ? '🔇' : '🔊';
+        }}, 500);
+    </script>
     """, unsafe_allow_html=True)
 
 # Header with hero logo - full height
