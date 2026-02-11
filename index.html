@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEOBOT Pro - AI-Powered SEO Audit Engine</title>
+    <meta name="description" content="Intelligent SEO bot powered by 5 authoritative books. Get AI-powered recommendations for meta tags, schema.org, and search optimization with 1,600+ SEO rules.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(160deg, #000 0%, #0a0a0a 100%);
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; text-align: center; }
+
+        .logo {
+            max-width: 200px;
+            margin: 0 auto 1.5rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            background: linear-gradient(135deg, #d4a017 0%, #f4d03f 50%, #d4a017 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1.5rem, 5vw, 3rem);
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat { text-align: center; min-width: 100px; }
+
+        .stat-number {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #d4a017;
+            display: block;
+        }
+
+        .stat-label {
+            color: #9ca3af;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .feature {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(212, 160, 23, 0.3);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .feature:hover {
+            border-color: rgba(212, 160, 23, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(212, 160, 23, 0.2);
+        }
+
+        .feature h3 {
+            color: #d4a017;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #c4c4c4;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a017 0%, #b8860b 100%);
+            color: #000;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 160, 23, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #d4a017;
+            color: #d4a017;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(212, 160, 23, 0.1);
+        }
+
+        .commands {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(212, 160, 23, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+            text-align: left;
+        }
+
+        .commands h2 {
+            color: #d4a017;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        .command-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .command {
+            background: rgba(10, 10, 10, 0.8);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #d4a017;
+        }
+
+        .command code {
+            color: #f4d03f;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+
+        .command-desc {
+            color: #9ca3af;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .github {
+            margin-top: 2.5rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        .github a {
+            color: #d4a017;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .github a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .stats { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="herologo.png" alt="Wild & Wonderful Websites" class="logo" onerror="this.style.display='none'">
+
+        <h1>SEOBOT PRO</h1>
+        <p class="subtitle">AI-Powered SEO Audit Engine with RAG Knowledge Base</p>
+
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-number">5</span>
+                <div class="stat-label">SEO Books</div>
+            </div>
+            <div class="stat">
+                <span class="stat-number">1,600+</span>
+                <div class="stat-label">SEO Rules</div>
+            </div>
+            <div class="stat">
+                <span class="stat-number">100%</span>
+                <div class="stat-label">Free Audits</div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>📚 RAG Knowledge</h3>
+                <p>AI recommendations powered by 5 authoritative SEO books</p>
+            </div>
+            <div class="feature">
+                <h3>🔍 Smart Scanning</h3>
+                <p>Selenium-based scanning for JavaScript-rendered pages</p>
+            </div>
+            <div class="feature">
+                <h3>🎯 Lead Generation</h3>
+                <p>Smart fill extraction with contact capture funnel</p>
+            </div>
+            <div class="feature">
+                <h3>🛠️ Code Fixes</h3>
+                <p>Auto-generated code snippets to fix SEO issues</p>
+            </div>
+            <div class="feature">
+                <h3>📐 Schema Generator</h3>
+                <p>JSON-LD structured data for rich snippets</p>
+            </div>
+            <div class="feature">
+                <h3>🏷️ Meta Tags</h3>
+                <p>Complete meta tag sets with Open Graph & Twitter cards</p>
+            </div>
+        </div>
+
+        <div class="commands">
+            <h2>Quick Start</h2>
+            <div class="command-list">
+                <div class="command">
+                    <code>pip install -r requirements.txt</code>
+                    <div class="command-desc">Install dependencies</div>
+                </div>
+                <div class="command">
+                    <code>python ingest_knowledge.py</code>
+                    <div class="command-desc">Build knowledge base</div>
+                </div>
+                <div class="command">
+                    <code>streamlit run streamlit_app.py</code>
+                    <div class="command-desc">Launch web interface</div>
+                </div>
+                <div class="command">
+                    <code>python seo_bot.py</code>
+                    <div class="command-desc">Run CLI bot</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-group">
+            <a href="https://github.com/adaryusrgillum/WORKS" class="cta">View on GitHub</a>
+            <a href="https://github.com/adaryusrgillum/WORKS#readme" class="cta cta-secondary">Documentation</a>
+        </div>
+
+        <p class="github">
+            Deploy your own instance on <a href="https://streamlit.io/cloud">Streamlit Cloud</a> •
+            Built by <a href="https://github.com/adaryusrgillum">adaryusrgillum</a>
+        </p>
+    </div>
+</body>
+</html>
