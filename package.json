@@ -1,0 +1,48 @@
+{
+  "name": "seobot-desktop",
+  "version": "1.0.0",
+  "author": "SEOBOT",
+  "description": "SEOBOT desktop app powered by Streamlit and EPUB knowledge base",
+  "main": "main.js",
+  "scripts": {
+    "dev": "set ELECTRON_RUN_AS_NODE=&& electron .",
+    "build": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.seobot.desktop",
+    "productName": "SEOBOT",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "main.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": ".",
+        "to": "app_data",
+        "filter": [
+          "streamlit_app.py",
+          "epub_parser.py",
+          "knowledge_base.py",
+          "seo_engine.py",
+          "setup.py",
+          "advanced_seo_engine/**/*",
+          "*.epub",
+          "requirements.txt",
+          "README.md"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
+  },
+  "devDependencies": {
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8"
+  }
+}
