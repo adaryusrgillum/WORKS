@@ -420,7 +420,7 @@ st.markdown("""
 if VIDEO_B64:
     st.markdown(f"""
     <div class="video-bg-container">
-        <video id="bg-video" autoplay loop playsinline>
+        <video id="bg-video" autoplay muted loop playsinline>
             <source src="data:video/mp4;base64,{VIDEO_B64}" type="video/mp4">
         </video>
     </div>
@@ -441,26 +441,21 @@ if VIDEO_B64:
         transition: transform 0.2s;
     ">🔇</button>
     <script>
-        const video = document.getElementById('bg-video');
-        const btn = document.getElementById('sound-toggle');
+        (function() {{
+            const video = document.getElementById('bg-video');
+            const btn = document.getElementById('sound-toggle');
 
-        // Try to play with audio
-        video.muted = false;
-        video.play().catch(() => {{
-            // Browser blocked autoplay with sound, start muted
-            video.muted = true;
-            video.play();
-        }});
+            if (video) {{
+                // Force play the video
+                video.play().catch(e => console.log('Autoplay blocked:', e));
 
-        function toggleSound() {{
-            video.muted = !video.muted;
-            btn.textContent = video.muted ? '🔇' : '🔊';
-        }}
-
-        // Update button on page load
-        setTimeout(() => {{
-            btn.textContent = video.muted ? '🔇' : '🔊';
-        }}, 500);
+                // Toggle sound function
+                window.toggleSound = function() {{
+                    video.muted = !video.muted;
+                    btn.textContent = video.muted ? '🔇' : '🔊';
+                }};
+            }}
+        }})();
     </script>
     """, unsafe_allow_html=True)
 
